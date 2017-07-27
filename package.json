@@ -1,0 +1,28 @@
+{
+  "name": "react-native-elastic-image-slider",
+  "version": "1.0.0",
+  "description": "react native elastic image slider",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiewang/react-native-elastic-image-slider.git"
+  },
+  "keywords": [
+    "react-native",
+    "image",
+    "slider",
+    "elastic"
+  ],
+  "author": "xiewang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiewang/react-native-elastic-image-slider/issues"
+  },
+  "homepage": "https://github.com/xiewang/react-native-elastic-image-slider"
+}

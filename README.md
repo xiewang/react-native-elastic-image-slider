@@ -58,7 +58,6 @@ npm install react-native-elastic-image-slider
 |---|---|---|---|---|
 |**`images`**|`array`| the images to slide |`Yes`|None|
 |**`initialPosition`**|`number`| initial one of all images to show|`No`|`0`|
-|**`onPositionChanged`**|`func`| will be called when the current image is changed |`No`| None |
 |**`style`**|`style`| custom style|`No`| None |
 	
 ##	Thanks
