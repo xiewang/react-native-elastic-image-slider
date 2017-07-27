@@ -26,8 +26,7 @@ export default class ImageSlider extends Component {
             height: new Animated.Value(this._scaleHeight(this.props.images[0])),
             left: new Animated.Value(0),
             scrolling: false,
-            timeout: null,
-            countDown: this.props.countDown? this.props.countDown : 0
+            timeout: null
         };
 
         // Enable LayoutAnimation under Android
@@ -57,7 +56,8 @@ export default class ImageSlider extends Component {
             clearTimeout(this.state.timeout);
         }
         this.setState({
-            position: index, timeout: setTimeout(() => {
+            position: index,
+            timeout: setTimeout(() => {
                 this.setState({scrolling: false, timeout: null});
                 if (this.props.onPositionChanged) {
                     this.props.onPositionChanged(index);
@@ -162,15 +162,7 @@ export default class ImageSlider extends Component {
     }
 
     componentDidMount() {
-        let interval = null;
-        let the = this;
-        if(this.props.countDown)
-            interval = setInterval(()=>{
-                if(  the.state.countDown > 1)
-                    the.setState({countDown: the.state.countDown-1});
-                else
-                    clearInterval(interval);
-            }, 1000);
+
     }
 
     componentWillUnmount() {
@@ -242,11 +234,6 @@ export default class ImageSlider extends Component {
 
                 <Text style={styles.sequence}>{position+1}/{this.props.images.length}</Text>
             </View>
-            {
-                this.props.countDown ?  <View style={styles.count}>
-                    <Text style={styles.countText}>{this.state.countDown}s</Text>
-                </View>: null
-            }
 
         </View>);
     }
