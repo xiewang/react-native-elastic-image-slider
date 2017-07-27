@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component,PropTypes} from 'react';
 import {
     Image,
     Text,
@@ -17,13 +17,13 @@ import {
 import styles from './style';
 
 
-export default class ImageSlider extends Component {
+class ImageSlider extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            position: 0,
-            height: new Animated.Value(this._scaleHeight(this.props.images[0])),
+            position: this.props.initialPosition,
+            height: new Animated.Value(this._scaleHeight(this.props.images[this.props.initialPosition])),
             left: new Animated.Value(0),
             scrolling: false,
             timeout: null
@@ -35,6 +35,12 @@ export default class ImageSlider extends Component {
         }
 
     }
+
+    static defaultProps = {
+        position: 0,
+        initialPosition: 0
+    };
+
 
     _move(index) {
         const width = Dimensions.get('window').width;
@@ -71,9 +77,10 @@ export default class ImageSlider extends Component {
         const imageHeight = image.height;
         return Dimensions.get('window').width * imageHeight / imageWidth;
     }
+
     _getPosition() {
         if (typeof this.props.position === 'number') {
-            return this.props.position;
+            //return this.props.position;
         }
         return this.state.position;
     }
@@ -88,8 +95,10 @@ export default class ImageSlider extends Component {
     componentWillMount() {
         const width = Dimensions.get('window').width;
 
+        this.state.left.setValue(-(width * this.state.position));
+
         if (typeof this.props.position === 'number') {
-            this.state.left.setValue(-(width * this.props.position));
+            //this.state.left.setValue(-(width * this.props.position));
         }
 
         let release = (e, gestureState) => {
@@ -238,3 +247,13 @@ export default class ImageSlider extends Component {
         </View>);
     }
 }
+
+ImageSlider.propTypes = {
+    images: PropTypes.array,
+    position: PropTypes.number,
+    initialPosition: PropTypes.number,
+    onPositionChanged: PropTypes.func,
+    style: View.propTypes.style
+};
+
+export default ImageSlider;
