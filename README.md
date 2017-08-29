@@ -1,6 +1,6 @@
 # react-native-elastic-image-slider
 
-react native elastic image slider component, including emoji
+react native elastic image slider component
 
 ![emoticons](docs/demo.gif)
 
